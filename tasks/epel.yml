@@ -1,2 +1,2 @@
 - name: install EPEL Repository
-  yum: name="{{ epel_url }}" state=present
+  action: "{{ ansible_pkg_mgr }} name={{ epel_url }} state=present"
