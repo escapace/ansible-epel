@@ -12,5 +12,5 @@ epel_url: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 ```yaml
 - hosts: servers
   roles:
-    - epiloque.epel
+    - escapace.epel
 ```
