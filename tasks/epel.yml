@@ -1,7 +1,4 @@
-# - name: install RPM-GPG-KEY-EPEL-8
-#   rpm_key:
-#     state: present
-#     key: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-8
+---
 
 - name: install dnf-plugins-core
   action: "{{ ansible_pkg_mgr }} name=dnf-plugins-core state=present"
