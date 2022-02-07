@@ -1,7 +1,7 @@
-- name: install RPM-GPG-KEY-EPEL-8
-  rpm_key:
-    state: present
-    key: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-8
+# - name: install RPM-GPG-KEY-EPEL-8
+#   rpm_key:
+#     state: present
+#     key: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-8
 
 - name: install dnf-plugins-core
   action: "{{ ansible_pkg_mgr }} name=dnf-plugins-core state=present"
@@ -9,11 +9,11 @@
 - name: install epel-release
   dnf:
     name:
-      - epel-release
-      - epel-next-release
+      - "{{ epel_url }}"
+      - "{{ epel_next_url }}"
     state: present
 
-- name: enable power tools repository
+- name: enable crb
   command:
-    cmd: dnf config-manager --set-enabled powertools
+    cmd: dnf config-manager --set-enabled crb
   changed_when: false
