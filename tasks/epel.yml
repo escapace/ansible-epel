@@ -9,13 +9,13 @@
     key: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-9
 
 - name: install epel-release
-  dnf:
+  ansible.builtin.dnf:
     name:
       - "{{ epel_url }}"
       - "{{ epel_next_url }}"
     state: present
 
 - name: enable crb
-  command:
+  ansible.builtin.command:
     cmd: dnf config-manager --set-enabled crb
   changed_when: false
