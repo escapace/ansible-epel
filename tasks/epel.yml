@@ -1,7 +1,9 @@
 ---
 
 - name: install dnf-plugins-core
-  action: "{{ ansible_pkg_mgr }} name=dnf-plugins-core state=present"
+  ansible.builtin.dnf:
+    name: dnf-plugins-core
+    state: present
 
 - name: import epel gpg keys
   ansible.builtin.rpm_key:
