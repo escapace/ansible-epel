@@ -7,7 +7,7 @@
 - name: import epel gpg keys
   ansible.builtin.rpm_key:
     state: present
-    key: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-9
+    key: "{{ epel_rpm_key }}"
 
 - name: install epel-release
   ansible.builtin.dnf:
