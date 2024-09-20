@@ -1,16 +1,16 @@
 ---
+prerun: false
 dependency:
+  name: shell
   command: >
     ansible-galaxy install -fr
     ${MOLECULE_SCENARIO_DIRECTORY}/../../requirements.yaml
-  name: shell
 driver:
   name: docker
 platforms:
-  - image: ghcr.io/escapace/ansible-test-containers
-    name: instance
+  - name: instance
+    image: ghcr.io/escapace/ansible-test-containers
     pre_build_image: true
-prerun: false
 provisioner:
   name: ansible
   playbooks:
