@@ -1,5 +1,5 @@
 ---
-- name: Converge
-  hosts: all
+- hosts: all
+  name: Converge
   roles:
     - role: escapace.epel
