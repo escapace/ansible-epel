@@ -2,4 +2,4 @@
 - hosts: all
   name: Converge
   roles:
-    - role: escapace.epel
+    - role: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
