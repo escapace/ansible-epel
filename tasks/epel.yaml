@@ -1,29 +1,29 @@
 ---
-- ansible.builtin.dnf:
+- name: install dnf-plugins-core
+  ansible.builtin.dnf:
     name: dnf-plugins-core
     state: present
 
-  name: install dnf-plugins-core
-- ansible.builtin.rpm_key:
+- name: import epel gpg keys
+  ansible.builtin.rpm_key:
     key: '{{ epel_rpm_key }}'
-
     state: present
-  name: import epel gpg keys
-- ansible.builtin.dnf:
+
+- name: install epel-release
+  ansible.builtin.dnf:
     name:
       - '{{ epel_url }}'
       - '{{ epel_next_url }}'
     state: present
 
-  name: install epel-release
-- ansible.builtin.command:
+- name: enable crb repository
+  ansible.builtin.command:
     cmd: dnf config-manager --enable crb
-  name: enable crb repository
+  when: (ansible_distribution == "CentOS" and ansible_distribution_major_version|int > 8) or (ansible_distribution == "Rocky" and ansible_distribution_major_version|int > 8)
   tags:
     - molecule-idempotence-notest
 
-  when: (ansible_distribution == "CentOS" and ansible_distribution_major_version|int > 8) or (ansible_distribution == "Rocky" and ansible_distribution_major_version|int > 8)
-- community.general.rhsm_repository:
+- name: enable codeready-builder-for-rhel-9
+  community.general.rhsm_repository:
     name: codeready-builder-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms
-  name: enable codeready-builder-for-rhel-9
   when: ansible_distribution == "RedHat" and ansible_distribution_major_version|int == 9
