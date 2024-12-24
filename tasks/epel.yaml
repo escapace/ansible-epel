@@ -1,8 +1,13 @@
 ---
-- name: install dnf-plugins-core
+- name: install dependencies
   ansible.builtin.dnf:
-    name: dnf-plugins-core
+    name: "{{ packages }}"
     state: present
+    update_cache: true
+  vars:
+    packages:
+      - dnf-plugins-core
+      - gnupg2
 
 - name: import epel gpg keys
   ansible.builtin.rpm_key:
