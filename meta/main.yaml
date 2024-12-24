@@ -1,18 +1,9 @@
 ---
 dependencies: []
 galaxy_info:
+  role_name: epel
   author: escapace
   description: epel role
   issue_tracker_url: https://github.com/escapace/ansible-epel/issues
   license: Apache-2.0
-  min_ansible_version: '2.13'
-  platforms:
-    - name: EL
-      versions:
-        - '9'
-
-  galaxy_tags:
-    - escapace
-    - epel
-
-  role_name: epel
+  min_ansible_version: '2.17'
