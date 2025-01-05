@@ -1,3 +1,5 @@
 ---
-collections: []
 roles: []
+
+collections:
+  - community.general
