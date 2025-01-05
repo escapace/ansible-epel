@@ -6,4 +6,4 @@ galaxy_info:
   description: epel role
   issue_tracker_url: https://github.com/escapace/ansible-epel/issues
   license: Apache-2.0
-  min_ansible_version: '2.17'
+  min_ansible_version: "2.17"

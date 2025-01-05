@@ -11,13 +11,13 @@
 
 - name: import epel gpg keys
   ansible.builtin.rpm_key:
-    key: '{{ epel_rpm_key }}'
+    key: "{{ epel_rpm_key }}"
     state: present
 
 - name: install epel-release
   ansible.builtin.dnf:
     name:
-      - '{{ epel_url }}'
+      - "{{ epel_url }}"
     state: present
 
 - name: ensure the crb repository is enabled
