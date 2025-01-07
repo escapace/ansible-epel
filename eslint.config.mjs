@@ -5,9 +5,6 @@ import { escapace, compose } from 'eslint-config-escapace'
 export default compose(
   escapace(),
   {
-    rules: {},
-  },
-  {
     files: [
       'defaults/**/*.{yml,yaml}',
       'handlers/**/*.{yml,yaml}',
