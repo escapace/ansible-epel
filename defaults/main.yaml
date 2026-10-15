@@ -1,6 +1,3 @@
 ---
 epel_rpm_key: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-10
 epel_url: https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
-# epel_url: https://mirror.math.princeton.edu/pub/epel/epel-release-latest-9.noarch.rpm
-# epel_next_url: https://mirror.math.princeton.edu/pub/epel/epel-next-release-latest-9.noarch.rpm
-# epel_rpm_key: https://mirror.math.princeton.edu/pub/epel/RPM-GPG-KEY-EPEL-9

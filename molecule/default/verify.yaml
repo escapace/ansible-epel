@@ -1,0 +1,32 @@
+---
+- name: verify
+  hosts: all
+  tasks:
+    - name: gather installed package facts
+      ansible.builtin.package_facts:
+        manager: auto
+
+    - name: verify epel packages are installed
+      ansible.builtin.assert:
+        that:
+          - "'epel-release' in ansible_facts['packages']"
+          - "'dnf-plugins-core' in ansible_facts['packages']"
+          - "'gnupg2' in ansible_facts['packages']"
+
+    - name: read repository configuration
+      ansible.builtin.slurp:
+        src: "{{ item }}"
+      loop:
+        - /etc/yum.repos.d/epel.repo
+        - /etc/yum.repos.d/centos.repo
+      register: epel_repository_configuration
+
+    - name: verify epel and crb repositories are enabled
+      ansible.builtin.assert:
+        that:
+          - >-
+            epel_repository_configuration.results[0].content | b64decode is
+            search('(?m)^\[epel\]\s*\n[^\[]*^enabled\s*=\s*1\s*$')
+          - >-
+            epel_repository_configuration.results[1].content | b64decode is
+            search('(?m)^\[crb\]\s*\n[^\[]*^enabled\s*=\s*1\s*$')

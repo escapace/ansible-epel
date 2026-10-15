@@ -1,0 +1,17 @@
+---
+argument_specs:
+  main:
+    short_description: configure the epel package repository
+    options:
+      epel_rpm_key:
+        type: str
+        default: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-10
+        description:
+          - URL or managed-host file path of the EPEL RPM signing key.
+          - Use a key that matches the release RPM selected by epel_url.
+      epel_url:
+        type: str
+        default: https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
+        description:
+          - URL or managed-host file path of the EPEL release RPM.
+          - Select a release matching the target distribution's major version.
